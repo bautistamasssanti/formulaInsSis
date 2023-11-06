@@ -1,0 +1,90 @@
+@startuml
+interface Visitable {
+    accept(Visitor<T> visitor)
+}
+interface Visitor<T> {
+    T visit(Number number)
+    T visit(Variable variable)
+    T visit(Sum sum)
+    T visit(Sub sub)
+    T visit(Mult mult)
+    T visit(Div div)
+    T visit(Power power)
+    T visit(Parenthesis parenthesis)
+    T visit(Sqrt sqrt)
+    T visit(Module module)
+}
+class Number{
+- Double value
++Double getValue()
+}
+class Variable{
+- String name
++String getName()
+}
+class Sum{
+- Visitable term1
+- Visitable term2
++Visitable getTerm1()
++Visitable getTerm2()
+}
+class Sub{
+- Visitable term1
+- Visitable term2
++Visitable getTerm1()
++Visitable getTerm2()
+}
+class Mult{
+- Visitable term1
+- Visitable term2
++Visitable getTerm1()
++Visitable getTerm2()
+}
+class Div{
+- Visitable term1
+- Visitable term2
++Visitable getTerm1()
++Visitable getTerm2()
+}
+class Power{
+- Visitable term1
+- Visitable term2
++Visitable getTerm1()
++Visitable getTerm2()
+}
+class Parenthesis{
+- Visitable term1
++Visitable getTerm1()
+}
+class Sqrt{
+- Visitable term1
++Visitable getTerm1()
+}
+class Module{
+- Visitable term1
++Visitable getTerm1()
+}
+class EvaluateVisitor{
+- Map<String, Double> variables
+}
+class PrintVisitor{
+}
+class ListVariablesVisitor{
+}
+Visitable ..|> Number
+Visitable ..|> Variable
+Visitable ..|> Sum
+Visitable ..|> Sub
+Visitable ..|> Mult
+Visitable ..|> Div
+Visitable ..|> Power
+Visitable ..|> Parenthesis
+Visitable ..|> Sqrt
+Visitable ..|> Module
+Visitor ..|> EvaluateVisitor
+Visitor ..|> PrintVisitor
+Visitor ..|> ListVariablesVisitor
+Visitor --> Visitable
+
+
+@enduml
