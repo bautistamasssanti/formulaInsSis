@@ -1,0 +1,20 @@
+@startuml
+interface function{
+}
+class variable{
+}
+class number{
+}
+class sum{
+}
+class sub{
+}
+class mult{
+}
+
+function ..|> number
+function ..|> variable
+function ..|> sum
+function ..|> sub
+function ..|> mult
+@enduml
