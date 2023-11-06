@@ -1,20 +1,49 @@
 @startuml
-interface function{
+interface Function{
+Double evaluate(Map<String,Double> variables)
+String functionToString()
+List<String> getVariables(List<String> variables)
 }
-class variable{
+class Variable{
+- String name
 }
-class number{
+class Number{
+- Double value
 }
-class sum{
+class Sum{
+- Function term1
+- Function term2
 }
-class sub{
+class Sub{
+- Function term1
+- Function term2
 }
-class mult{
+class Mult{
+- Function term1
+- Function term2
+}
+class Div{
+- Function term1
+- Function term2
+}
+class Sqrt{
+- Function term1
+}
+class Power{
+- Function term1
+- Function term2
+}
+class Module{
+- Function term1
 }
 
-function ..|> number
-function ..|> variable
-function ..|> sum
-function ..|> sub
-function ..|> mult
+Function ..|> Number
+Function ..|> Variable
+Function ..|> Sum
+Function ..|> Sub
+Function ..|> Mult
+Function ..|> Div
+Function ..|> Sqrt
+Function ..|> Power
+Function ..|> Module
 @enduml
